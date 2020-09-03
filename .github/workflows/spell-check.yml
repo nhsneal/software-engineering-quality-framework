@@ -16,9 +16,7 @@ jobs:
     - name: Check spelling
       uses: docker://pipelinecomponents/markdown-spellcheck:latest
       with:
-        args:
-          - --report
-          - '**/*.md'
+        args: --report '**/*.md'
       # run:
       #   using: 'docker'
       #   image: 'pipelinecomponents/markdown-spellcheck:latest'
