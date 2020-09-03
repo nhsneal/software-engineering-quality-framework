@@ -13,6 +13,10 @@ jobs:
     steps:
     - name: Check out code.
       uses: actions/checkout@v2
+    - name: ls
+      uses: docker://pipelinecomponents/markdown-spellcheck:latest
+      with:
+        args: ls /github/workspace/
     - name: Check spelling
       uses: docker://pipelinecomponents/markdown-spellcheck:latest
       with:
