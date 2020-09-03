@@ -14,8 +14,13 @@ jobs:
     - name: Check out code.
       uses: actions/checkout@v2
     - name: Check spelling
-      run:
-        using: 'docker'
-        image: 'pipelinecomponents/markdown-spellcheck:latest'
-        args: ['--report', '**/*.md']
+      uses: docker://pipelinecomponents/markdown-spellcheck:latest
+      with:
+        args:
+          - --report
+          - '**/*.md'
+      # run:
+      #   using: 'docker'
+      #   image: 'pipelinecomponents/markdown-spellcheck:latest'
+      #   args: ['--report', '**/*.md']
       # run: mdspell --report '**/*.md'
