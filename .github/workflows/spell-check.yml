@@ -6,8 +6,16 @@ jobs:
   spellcheck:
     name: runner / spellcheck
     runs-on: ubuntu-latest
+    # container:
+    #   image: pipelinecomponents/markdown-spellcheck:latest
+    #   # options: --entrypoint sh
+    #   entrypoint: sh
     steps:
     - name: Check out code.
       uses: actions/checkout@v2
-    - name: Run PySpelling as a GitHub action
-      uses: UnicornGlobal/spellcheck-github-actions@master
+    - name: Check spelling
+      runs:
+        using: 'docker'
+        image: 'pipelinecomponents/markdown-spellcheck:latest'
+        args: ['--report', '**/*.md']
+      # run: mdspell --report '**/*.md'
